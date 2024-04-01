@@ -23,7 +23,7 @@ jobs:
         uses: salsify/action-detect-and-tag-new-version@v2
         id: detect-new-version
         with:
-          create-tag: true
+          create-tag: false
           version-command: |
             jq -r '.version' package.json
 
