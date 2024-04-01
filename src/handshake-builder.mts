@@ -9,11 +9,11 @@ export const skinTonesModifiers: Record<TSupportedSkinColor, number> = {
     'dark': 0x1F3FF,
 };
 
-export default function buildHandshakeEmoji(): '🤝';
-export default function buildHandshakeEmoji(skinTone: TSkinColor): string;
-export default function buildHandshakeEmoji(left: 'yellow', right: 'yellow'): '🤝';
-export default function buildHandshakeEmoji(left: TSupportedSkinColor, right?: TSupportedSkinColor): string;
-export default function buildHandshakeEmoji(left: TSkinColor = 'yellow', right?: TSkinColor): string {
+export function buildHandshakeEmoji(): '🤝';
+export function buildHandshakeEmoji(skinTone: TSkinColor): string;
+export function buildHandshakeEmoji(left: 'yellow', right: 'yellow'): '🤝';
+export function buildHandshakeEmoji(left: TSupportedSkinColor, right?: TSupportedSkinColor): string;
+export function buildHandshakeEmoji(left: TSkinColor = 'yellow', right?: TSkinColor): string {
     if (!right) {
         right = left;
     }
@@ -39,3 +39,5 @@ export default function buildHandshakeEmoji(left: TSkinColor = 'yellow', right?:
         skinTonesModifiers[right as TSupportedSkinColor]
     );
 }
+
+export default buildHandshakeEmoji;
