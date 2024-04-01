@@ -1,6 +1,6 @@
 {
   "name": "emoji-utilities",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An ever expanding library of emoji utilities. (tree-shakable)",
   "type": "module",
   "main": "./dist/index.mjs",
@@ -25,7 +25,11 @@
   "keywords": [
     "emoji", "utilities", "handshake"
   ],
-  "author": "",
+  "author": {
+    "name": "Omran Jamal",
+    "email": "omran@omranjamal.me",
+    "url": "https://omranjamal.me"
+  },
   "license": "MIT",
   "devDependencies": {
     "typescript": "5.4.3",
