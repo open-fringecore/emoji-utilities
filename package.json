@@ -1,6 +1,6 @@
 {
     "name": "emoji-utilities",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "An ever expanding library of emoji utilities. (tree-shakable)",
     "type": "module",
     "main": "./dist/index.mjs",
@@ -19,8 +19,7 @@
         "build": "tsc --project tsconfig.build.json",
         "build:watch": "tsc --project tsconfig.build.json --watch --preserveWatchOutput",
         "dev": "pnpm run build:watch",
-        "test": "jest",
-        "prepublishOnly": "pnpm test && pnpm run build"
+        "test": "jest"
     },
     "keywords": [
         "emoji",
