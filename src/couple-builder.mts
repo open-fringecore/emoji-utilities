@@ -1,10 +1,10 @@
-import {gender, type TGender} from './misc/genders.mjs';
+import {genders, type TGender} from './misc/genders.mjs';
 
 import {
     skinToneModifiers,
     TSupportedSkinTone,
     type TSkinTone,
-} from './misc/skinTones.mjs';
+} from './misc/skin-tones.mjs';
 
 export type TPerson = {
     gender: TGender;
@@ -43,23 +43,23 @@ export function buildCoupleWithHeartEmoji(
 
     if (left.skinTone === 'yellow' && right.skinTone === 'yellow') {
         return String.fromCodePoint(
-            gender[left.gender],
+            genders[left.gender],
             0x200d,
             0x2764,
             0xfe0f,
             0x200d,
-            gender[right.gender],
+            genders[right.gender],
         );
     }
 
     return String.fromCodePoint(
-        gender[left.gender],
+        genders[left.gender],
         skinToneModifiers[left.skinTone as TSupportedSkinTone],
         0x200d,
         0x2764,
         0xfe0f,
         0x200d,
-        gender[right.gender],
+        genders[right.gender],
         skinToneModifiers[right.skinTone as TSupportedSkinTone],
     );
 }

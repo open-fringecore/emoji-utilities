@@ -2,7 +2,7 @@ import {
     skinToneModifiers,
     TSkinTone,
     TSupportedSkinTone,
-} from './misc/skinTones.mjs';
+} from './misc/skin-tones.mjs';
 
 export function buildHandshakeEmoji(): '🤝';
 export function buildHandshakeEmoji(skinTone: TSkinTone): string;
