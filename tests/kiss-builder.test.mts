@@ -1,4 +1,4 @@
-import buildKissEmoji from "../src/kiss-emoiji-builder.mts";
+import buildKissEmoji from "../src/kiss-builder.mts";
 
 describe("Kiss Emoji Builder", () => {
     it("should return a yellow persons kiss emoji by default", () => {
@@ -30,6 +30,14 @@ describe("Kiss Emoji Builder", () => {
                 {gender: 'man', skinTone: 'medium-light'}
             )
         ).toBe("👩🏾‍❤️‍💋‍👨🏼");
+    });
+
+    it("should return two medium skinned women kissing", () => {
+        expect(
+            buildKissEmoji(
+                {gender: 'woman', skinTone: 'medium'}
+            )
+        ).toBe("👩🏽‍❤️‍💋‍👩🏽");
     });
 
     it("should return two medium skinned women kissing", () => {

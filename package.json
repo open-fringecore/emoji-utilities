@@ -1,6 +1,6 @@
 {
     "name": "emoji-utilities",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "description": "An ever expanding library of emoji utilities. (tree-shakable)",
     "type": "module",
     "main": "./dist/index.mjs",
@@ -13,6 +13,18 @@
         "./handshake-builder": {
             "import": "./dist/handshake-builder.mjs",
             "types": "./dist/handshake-builder.d.mts"
+        },
+        "./kiss-builder": {
+            "import": "./dist/kiss-builder.mjs",
+            "types": "./dist/kiss-builder.d.mts"
+        },
+        "./couple-builder": {
+            "import": "./dist/couple-builder.mjs",
+            "types": "./dist/couple-builder.d.mts"
+        },
+        "./holding-hands-builder": {
+            "import": "./dist/holding-hands-builder.mjs",
+            "types": "./dist/holding-hands-builder.d.mts"
         }
     },
     "scripts": {
