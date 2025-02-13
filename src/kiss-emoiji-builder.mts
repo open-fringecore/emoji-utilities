@@ -1,3 +1,5 @@
+import { TSkinColor } from "./handshake-builder.mts";
+
 export type TskinColor =
     | 'light'
     | 'medium-light'
@@ -6,21 +8,15 @@ export type TskinColor =
     | 'dark'
     | 'yellow';
 
-export type Tperson =
-    | 'young-male'
-    | 'adult-male'
-    | 'female'
-    | 'yellow-male'
-    | 'yellow-female'
-    | 'yellow-adult-male';
+export type TGender =
+    | 'man'
+    | 'woman'
+    | 'person';
 
-export type TsupportedSkinColor = Exclude<TskinColor, 'yellow'>;
-export type TsupportedPerson = Exclude<
-    Tperson,
-    'yellow-male' | 'yellow-female' | 'yellow-adult-male'
->;
+export type TSupportedSkinColor = Exclude<TskinColor, 'yellow'>;
+export type TSupportedGender = TGender;
 
-export const skinToneModifiers = {
+export const skinToneModifiers: Record<TSupportedSkinColor, number> = {
     light: 0x1f3fb,
     'medium-light': 0x1f3fc,
     medium: 0x1f3fd,
@@ -28,27 +24,57 @@ export const skinToneModifiers = {
     dark: 0x1f3ff,
 };
 
-export const personModifiers = {
-    'young-male': 0x1f9d1,
-    female: 0x1f469,
-    'adult-male': 0x1f468,
+export const gender: Record<TSupportedGender, number> = {
+    person: 0x1f9d1,
+    woman: 0x1f469,
+    man: 0x1f468,
+};
+
+export type TPerson = {
+    gender: TGender,
+    skinTone: TSkinColor
 };
 
 export function buildKissEmoji(
-    person1: Tperson,
-    skinColor1: TskinColor,
-    person2: Tperson,
-    skinColor2: TskinColor,
+    left: TPerson = {
+        gender: 'person',
+        skinTone: 'yellow'
+    },
+    right: TPerson = {
+        gender: 'person',
+        skinTone: 'yellow'
+    }
 ) {
+    if ((left.skinTone === 'yellow' || right.skinTone === 'yellow') && left.skinTone !== right.skinTone) {
+        throw new Error(
+            'yellow skin tone can only be paired with yellow skin tone due to lack of support in unicode.',
+        );
+    }
+
+    if (left.skinTone === 'yellow' && right.skinTone === 'yellow') {
+        return String.fromCodePoint(
+            gender[left.gender],
+            0x200d,
+            0x2764,
+            0xfe0f,
+            0x200d,
+            0x1f48b,
+            0x200d,
+            gender[right.gender],
+        );
+    }
+
     return String.fromCodePoint(
-        personModifiers[person1 as TsupportedPerson],
-        skinToneModifiers[skinColor1 as TsupportedSkinColor],
+        gender[left.gender],
+        skinToneModifiers[left.skinTone as TSupportedSkinColor],
         0x200d,
         0x2764,
         0xfe0f,
+        0x200d,
         0x1f48b,
-        personModifiers[person2 as TsupportedPerson],
-        skinToneModifiers[skinColor2 as TsupportedSkinColor],
+        0x200d,
+        gender[right.gender],
+        skinToneModifiers[right.skinTone as TSupportedSkinColor],
     );
 }
 
