@@ -1,6 +1,6 @@
 {
     "name": "emoji-utilities",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "An ever expanding library of emoji utilities. (tree-shakable)",
     "type": "module",
     "main": "dist/index.mjs",
